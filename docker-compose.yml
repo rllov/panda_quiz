@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - ALLOWED_ORIGINS=http://localhost,http://localhost:3000,http://localhost:5173,http://localhost:80,https://panda-quiz.onrender.com
+
+  frontend:
+    build:
+      context: ./panda_shift_lead_training_quiz
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=production
+      - VITE_API_URL=https://panda-quiz-be.onrender.com
